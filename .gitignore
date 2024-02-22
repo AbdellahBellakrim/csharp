@@ -1,43 +1,44 @@
-*.swp
-*.*~
-project.lock.json
-.DS_Store
-*.pyc
-nupkg/
+# Ignore all the specified files and directories in any place in this dir and sub dir
+**/*.swp
+**/*.*~
+**/project.lock.json
+**/.DS_Store
+**/*.pyc
+**/nupkg/
 
 # Visual Studio Code
-.vscode/
+**/.vscode/
 
 # Rider
-.idea/
+**/.idea/
 
 # Visual Studio
-.vs/
+**/.vs/
 
 # Fleet
-.fleet/
+**/.fleet/
 
 # Code Rush
-.cr/
+**/.cr/
 
 # User-specific files
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
+**/*.suo
+**/*.user
+**/*.userosscache
+**/*.sln.docstates
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-build/
-bld/
-[Bb]in/
-[Oo]bj/
-[Oo]ut/
-msbuild.log
-msbuild.err
-msbuild.wrn
+**/[Dd]ebug/
+**/[Dd]ebugPublic/
+**/[Rr]elease/
+**/[Rr]eleases/
+**/x64/
+**/x86/
+**/build/
+**/bld/
+**/[Bb]in/
+**/[Oo]bj/
+**/[Oo]ut/
+**/msbuild.log
+**/msbuild.err
+**/msbuild.wrn
