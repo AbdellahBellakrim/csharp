@@ -5,10 +5,11 @@ namespace TaskManager
     public class TaskManager
     {
         public List<Task> tasks = new List<Task>();
-        public void AddTask(string title, string description, string dueDate, TaskState status)
+        public Task AddTask(string title, string description, string dueDate, TaskState status)
         {
             Task task = new Task(title, description, dueDate, status);
             tasks.Add(task);
+            return task;
         }
 
         public void EditTask(string id, string title, string description, string dueDate, TaskState status)

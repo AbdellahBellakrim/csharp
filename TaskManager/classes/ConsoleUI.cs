@@ -31,25 +31,18 @@ namespace TaskManager
             if (command == "ADD")
                 TaskManagerCommands.Add();
             else if (command == "EDIT")
-                Console.WriteLine("Editing a task");
+                TaskManagerCommands.Edit();
+
             else if (command == "DELETE")
                 Console.WriteLine("Deleting a task");
             else if (command == "HELP")
                 TaskManagerCommands.Help();
             else if (command == "EXIT")
                 TaskManagerCommands.Exit();
+            else if (command == "LIST")
+                Console.WriteLine("Listing ...");
             else
-            {
-                string cleanedcommand = Regex.Replace(command, @"\s+", " ");
-                if (cleanedcommand == "LIST --C")
-                    Console.WriteLine("Listing all complete tasks");
-                else if (cleanedcommand == "LIST --P")
-                    Console.WriteLine("Listing all pending tasks");
-                else if (cleanedcommand == "LIST --A")
-                    Console.WriteLine("Listing all tasks");
-                else
-                    Console.WriteLine("unknown command");
-            }
+                Console.WriteLine("unknown command");
         }
     }
 }
