@@ -34,7 +34,7 @@ namespace TaskManager
                 TaskManagerCommands.Edit();
 
             else if (command == "DELETE")
-                Console.WriteLine("Deleting a task");
+                TaskManagerCommands.Delete();
             else if (command == "HELP")
                 TaskManagerCommands.Help();
             else if (command == "EXIT")

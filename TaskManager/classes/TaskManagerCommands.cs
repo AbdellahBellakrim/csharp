@@ -113,7 +113,7 @@ namespace TaskManager.classes
 
         public static void Edit()
         {
-            Console.WriteLine("To edit your task please tap the task Id (ps: copy it from list)");
+            Console.WriteLine("To edit a task please tap the task Id (ps: copy it from list)");
             while (true)
             {
                 try
@@ -214,6 +214,38 @@ namespace TaskManager.classes
                 }
             }
 
+        }
+        public static void Delete()
+        {
+            Console.WriteLine("To romove a task please tap the task Id (ps: copy it from list; this action is irreversible)");
+            while (true)
+            {
+                try
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.Write("Id : ");
+                    string? id = Console.ReadLine()?.Trim();
+                    if (string.IsNullOrEmpty(id))
+                        throw new Exception("Id is required*");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Task? taskToRemove = manager.tasks.Find(t => t.Id == id);
+                    if (taskToRemove != null)
+                    {
+                        manager.tasks.Remove(taskToRemove);
+                        Console.WriteLine("Task removed successfully!");
+                    }
+                    else
+                        throw new Exception("Task not found*");
+                    break;
+
+                }
+                catch (Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(e.Message);
+                }
+
+            }
         }
     }
 }
