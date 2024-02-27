@@ -247,5 +247,9 @@ namespace TaskManager.classes
 
             }
         }
+        public static void List()
+        {
+            manager.ViewAllTasks();
+        }
     }
 }

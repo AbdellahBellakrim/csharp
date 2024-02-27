@@ -40,7 +40,7 @@ namespace TaskManager
             else if (command == "EXIT")
                 TaskManagerCommands.Exit();
             else if (command == "LIST")
-                Console.WriteLine("Listing ...");
+                TaskManagerCommands.List();
             else
                 Console.WriteLine("unknown command");
         }

@@ -35,6 +35,7 @@ namespace TaskManager
 
         public void ViewAllTasks()
         {
+            Console.WriteLine("===================================================");
             foreach (var task in tasks)
             {
                 task.DisplayTaskDetails();
