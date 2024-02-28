@@ -249,7 +249,37 @@ namespace TaskManager.classes
         }
         public static void List()
         {
-            manager.ViewAllTasks();
+            if (manager.tasks.Count == 0)
+            {
+                Console.WriteLine("No tasks found");
+                return;
+            }
+            else
+            {
+                Console.WriteLine("To list all tasks please tap : all");
+                Console.WriteLine("To list all pending tasks please tap : pending");
+                Console.WriteLine("To list all complete tasks please tap : complete");
+                while (true)
+                {
+                    try
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Console.Write("Type : ");
+                        string? input = Console.ReadLine()?.Trim();
+                        if (string.IsNullOrEmpty(input) || (input != "all" && input != "pending" && input != "complete"))
+                            throw new Exception("please enter all - pending - complete");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        manager.ViewAllTasks(input);
+                        break;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine(e.Message);
+                    }
+
+                }
+            }
         }
     }
 }

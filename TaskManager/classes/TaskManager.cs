@@ -33,13 +33,23 @@ namespace TaskManager
             }
         }
 
-        public void ViewAllTasks()
+        public void ViewAllTasks(string tasksType)
         {
-            Console.WriteLine("===================================================");
             foreach (var task in tasks)
             {
-                task.DisplayTaskDetails();
-                Console.WriteLine("===================================================");
+                if (tasksType == "all")
+                {
+                    Console.WriteLine("===================================================");
+                    task.DisplayTaskDetails();
+                    Console.WriteLine("===================================================");
+
+                }
+                else if(task.Status.ToString().ToLower() == tasksType)
+                {
+                    Console.WriteLine("===================================================");
+                    task.DisplayTaskDetails();
+                    Console.WriteLine("===================================================");
+                }
             }
         }
     }
