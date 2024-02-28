@@ -1,5 +1,6 @@
 using System.Net;
 using System.Runtime.InteropServices;
+using Newtonsoft.Json;
 using TaskManager.obj.enums;
 
 
@@ -22,6 +23,7 @@ namespace TaskManager.classes
             Console.WriteLine("DELETE : Delete a task");
             Console.WriteLine("LIST : List tasks");
             Console.WriteLine("HELP : List all commands");
+            Console.WriteLine("SAVE : Save tasks to file");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("EXIT : Exit the file manager :(");
             Console.ForegroundColor = ConsoleColor.White;
@@ -30,6 +32,7 @@ namespace TaskManager.classes
 
         public static void Exit()
         {
+            Save();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("adiós!");
             Console.ForegroundColor = ConsoleColor.White;
@@ -279,6 +282,34 @@ namespace TaskManager.classes
                     }
 
                 }
+            }
+        }
+        public static void Save()
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(manager.tasks);
+                File.WriteAllText("tasks.json", json);
+                Console.WriteLine("Tasks saved successfully!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        public static void Load()
+        {
+            try
+            {
+                string? json = File.ReadAllText("tasks.json");
+                if (string.IsNullOrEmpty(json))
+                    throw new Exception("No tasks found");
+                manager.tasks = JsonConvert.DeserializeObject<List<Task>>(json) ?? new List<Task>();
+                Console.WriteLine("Tasks loaded successfully!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
     }

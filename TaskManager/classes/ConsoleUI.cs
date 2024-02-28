@@ -13,6 +13,7 @@ namespace TaskManager
         public void Start()
         {
             TaskManagerCommands.Help();
+            TaskManagerCommands.Load();
             while (true)
             {
                 Console.Write("> : ");
@@ -41,6 +42,8 @@ namespace TaskManager
                 TaskManagerCommands.Exit();
             else if (command == "LIST")
                 TaskManagerCommands.List();
+            else if (command == "SAVE")
+                TaskManagerCommands.Save();            
             else
                 Console.WriteLine("unknown command");
         }
