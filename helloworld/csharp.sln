@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "HelloWorld.csproj", "{09A61A9C-F487-4079-A9B1-0544E3619074}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld(console application)", "HelloWorld(console application).csproj", "{09A61A9C-F487-4079-A9B1-0544E3619074}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager", "..\TaskManager\TaskManager.csproj", "{2626D9E5-3151-40E6-8789-53A2785FC093}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager(console application)", "..\TaskManager\TaskManager(console application).csproj", "{2626D9E5-3151-40E6-8789-53A2785FC093}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
