@@ -37,27 +37,50 @@ List<Game> games =
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+//  Get games endpoint
 app.MapGet("/games", () => games);
 
+//  Get game by Id endpoint
 app.MapGet("/games/{id}", (int id) =>
 {
     Game? game = games.Find(g => g.Id == id);
     if (game is null)
-    {
         return Results.NotFound();
-    }
     return Results.Ok(game);
 })
 .WithName(GetGameEndpointName);
 
-
+// Post game endpoint
 app.MapPost("/games", (Game game) =>
 {
     game.Id = games.Max(game => game.Id) + 1;
     games.Add(game);
-    
-    return Results.CreatedAtRoute(GetGameEndpointName, new{id = game.Id}, game);
-}); 
 
+    return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game);
+});
 
+// Put game endpoint
+app.MapPut("/games/{id}", (int id, Game updatedGame) =>
+{
+    Game? existingGame = games.Find(g => g.Id == id);
+    if (existingGame is null)
+        return Results.NotFound();
+    existingGame.Name = updatedGame.Name;
+    existingGame.Genre = updatedGame.Genre;
+    existingGame.Price = updatedGame.Price;
+    existingGame.ReleaseDate = updatedGame.ReleaseDate;
+    existingGame.ImageUrl = updatedGame.ImageUrl;
+    return Results.NoContent();
+
+});
+
+// Delete game endpoint
+app.MapDelete("/games/{id}", (int id) =>
+{
+    Game? game = games.Find(g => g.Id == id);
+    if (game is not null)
+        games.Remove(game);
+    return Results.NoContent();
+
+});
 app.Run();
