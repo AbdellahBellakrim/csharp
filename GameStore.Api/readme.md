@@ -41,3 +41,21 @@ Implement input validation to ensure that the API parameters meet the required c
 ### **3. Use Extension Methods for Better Code Organization**
 
 Leverage extension methods to organize and extend the functionality of your code. This promotes cleaner code structure and reusability.
+
+## **Module 3: Using Design Patterns and Best Practices**
+
+### **1. Use Repository Pattern for Better Data Manipulation**
+
+Implement the repository pattern to separate data access logic from business logic. This enhances data manipulation, promotes code maintainability, and allows for easier testing.
+
+### **2. Use Dependency Injection to Write Maintainable Code**
+
+Leverage dependency injection to manage object dependencies and write maintainable and testable code. ASP.NET Core's built-in dependency injection system helps organize and simplify code.
+
+### **3. Understand Service Lifetimes**
+
+Explore different service lifetimes available in ASP.NET Core, including Singleton, Scoped, and Transient. Choose the appropriate lifetime for your services based on the desired behavior and performance characteristics.
+
+### **4. Use Data Transfer Objects (DTOs) to Define Clear Contract Between Client and Server**
+
+Implement Data Transfer Objects (DTOs) to define a clear contract between the client and server. This helps in shaping the data exchanged between different parts of the application and improves communication between layers.
