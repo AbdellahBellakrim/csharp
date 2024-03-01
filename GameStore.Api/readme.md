@@ -59,3 +59,17 @@ Explore different service lifetimes available in ASP.NET Core, including Singlet
 ### **4. Use Data Transfer Objects (DTOs) to Define Clear Contract Between Client and Server**
 
 Implement Data Transfer Objects (DTOs) to define a clear contract between the client and server. This helps in shaping the data exchanged between different parts of the application and improves communication between layers.
+
+## **Module 4: Using .NET Configuration to Access SQL Server**
+
+### **1. Stand-Up SQL Server Instance Using Docker**
+
+Set up a SQL Server instance using Docker to create a portable and easily reproducible database environment.
+
+### **2. Use the .NET Configuration System**
+
+Leverage the .NET Configuration system to manage application settings, including database connection strings. This allows for flexibility and easy configuration changes.
+
+### **3. Use the .NET Secret Manager**
+
+Enhance security by utilizing the .NET Secret Manager to store sensitive information such as database connection strings. This ensures that sensitive data is kept separate from the codebase and is accessible only to authorized users.
