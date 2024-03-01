@@ -1,6 +1,5 @@
 using GameStore.Api.Entities;
 using GameStore.Api.Repositories;
-using Microsoft.Extensions.FileSystemGlobbing;
 
 namespace GameStore.Api.EndPoints;
 
@@ -10,16 +9,15 @@ public static class GameEndpoints
     public static RouteGroupBuilder MapGamesEndpoints(this IEndpointRouteBuilder routes)
     {
         var gamesRouteGroup = routes.MapGroup("/games").WithParameterValidation();
-        inMemGamesRepository repo = new();
 
         //  Get games endpoint
-        gamesRouteGroup.MapGet("", () => repo.GetAll());
+        gamesRouteGroup.MapGet("", (IGamesRepository repo) => repo.GetAll());
 
         //  Get game by Id endpoint
         gamesRouteGroup
             .MapGet(
                 "/{id}",
-                (int id) =>
+                (int id, IGamesRepository repo) =>
                 {
                     Game? game = repo.Get(id);
                     return game is not null ? Results.Ok(game) : Results.NotFound();
@@ -30,7 +28,7 @@ public static class GameEndpoints
         // Post game endpoint
         gamesRouteGroup.MapPost(
             "/",
-            (Game game) =>
+            (Game game, IGamesRepository repo) =>
             {
                 repo.Create(game);
                 return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game);
@@ -40,7 +38,7 @@ public static class GameEndpoints
         // Put game endpoint
         gamesRouteGroup.MapPut(
             "/{id}",
-            (int id, Game updatedGame) =>
+            (int id, Game updatedGame, IGamesRepository repo) =>
             {
                 Game? existingGame = repo.Get(id);
                 if (existingGame is null)
@@ -59,7 +57,7 @@ public static class GameEndpoints
         // Delete game endpoint
         gamesRouteGroup.MapDelete(
             "/{id}",
-            (int id) =>
+            (int id, IGamesRepository repo) =>
             {
                 Game? game = repo.Get(id);
                 if (game is not null)
