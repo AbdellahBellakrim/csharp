@@ -1,3 +1,4 @@
+using GameStore.Api.Dtos;
 using GameStore.Api.Entities;
 using GameStore.Api.Repositories;
 
@@ -11,7 +12,7 @@ public static class GameEndpoints
         var gamesRouteGroup = routes.MapGroup("/games").WithParameterValidation();
 
         //  Get games endpoint
-        gamesRouteGroup.MapGet("", (IGamesRepository repo) => repo.GetAll());
+        gamesRouteGroup.MapGet("", (IGamesRepository repo) => repo.GetAll().Select(game => game.AsDto()));
 
         //  Get game by Id endpoint
         gamesRouteGroup
@@ -20,7 +21,7 @@ public static class GameEndpoints
                 (int id, IGamesRepository repo) =>
                 {
                     Game? game = repo.Get(id);
-                    return game is not null ? Results.Ok(game) : Results.NotFound();
+                    return game is not null ? Results.Ok(game.AsDto()) : Results.NotFound();
                 }
             )
             .WithName(GetGameEndpointName);
@@ -28,26 +29,34 @@ public static class GameEndpoints
         // Post game endpoint
         gamesRouteGroup.MapPost(
             "/",
-            (Game game, IGamesRepository repo) =>
+            (CreateGameDto gameDto, IGamesRepository repo) =>
             {
+                Game game = new()
+                {
+                    Name = gameDto.Name,
+                    Genre = gameDto.Genre,
+                    Price = gameDto.Price,
+                    ReleaseDate = gameDto.ReleaseDate,
+                    ImageUrl = gameDto.ImageUrl
+                };
                 repo.Create(game);
-                return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game);
+                return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game.AsDto());
             }
         );
 
         // Put game endpoint
         gamesRouteGroup.MapPut(
             "/{id}",
-            (int id, Game updatedGame, IGamesRepository repo) =>
+            (int id, UpdateGameDto updatedGameDto, IGamesRepository repo) =>
             {
                 Game? existingGame = repo.Get(id);
                 if (existingGame is null)
                     return Results.NotFound();
-                existingGame.Name = updatedGame.Name;
-                existingGame.Genre = updatedGame.Genre;
-                existingGame.Price = updatedGame.Price;
-                existingGame.ReleaseDate = updatedGame.ReleaseDate;
-                existingGame.ImageUrl = updatedGame.ImageUrl;
+                existingGame.Name = updatedGameDto.Name;
+                existingGame.Genre = updatedGameDto.Genre;
+                existingGame.Price = updatedGameDto.Price;
+                existingGame.ReleaseDate = updatedGameDto.ReleaseDate;
+                existingGame.ImageUrl = updatedGameDto.ImageUrl;
 
                 repo.Update(existingGame);
                 return Results.NoContent();
