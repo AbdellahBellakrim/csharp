@@ -73,3 +73,25 @@ Leverage the .NET Configuration system to manage application settings, including
 ### **3. Use the .NET Secret Manager**
 
 Enhance security by utilizing the .NET Secret Manager to store sensitive information such as database connection strings. This ensures that sensitive data is kept separate from the codebase and is accessible only to authorized users.
+
+## **Module 5: Using Entity Framework Core**
+
+### **1. Understand Entity Framework Core**
+
+Get acquainted with Entity Framework Core and its role as an Object-Relational Mapping (ORM) tool for database interaction.
+
+### **2. Implement an Entity Framework DbContext**
+
+Create an Entity Framework DbContext to model and interact with the database entities. Define relationships, configurations, and other aspects of the data context.
+
+### **3. Use Database Migrations**
+
+Employ database migrations to manage changes to the database schema over time. Keep the database schema in sync with the application's data model.
+
+### **4. Implement an Entity Framework Repository**
+
+Build an Entity Framework Repository to encapsulate the data access logic within the application. This promotes the separation of concerns and maintainability.
+
+### **5. Use the Asynchronous Programming Model**
+
+Leverage the asynchronous programming model provided by Entity Framework Core to enhance the API's performance and responsiveness. Implement asynchronous database operations for improved scalability.
