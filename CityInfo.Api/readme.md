@@ -1,8 +1,8 @@
-# **CityInfoApi - ASP.NET Core 8**
+# **CityInfoAPI - ASP.NET Core 8**
 
 ## **Project Overview**
 
-CityInfoApi is a RESTful API built using C# and ASP.NET Core 8 to manage a cities info. The API follows the MVC approach, implementing CRUD operations (POST, GET, PUT, DELETE) with concepts such as route groups, input validation, extension methods, data transfer objects (DTO), dependency injection, singleton pattern, securing and documenting the api, testing and deploying the api.
+CityInfoAPI is a RESTful API built using C# and ASP.NET Core 8 to manage a cities info. The API follows the MVC approach, implementing CRUD operations (POST, GET, PUT, DELETE) with concepts such as route groups, input validation, extension methods, data transfer objects (DTO), dependency injection, singleton pattern, securing and documenting the API, testing and deploying the API.
 
 The project utilizes SQL Server with ASP.NET configuration and .NET Secret Manager to securely connect the API to the database. Entity Framework Core is employed as the ORM (Object-Relational Mapping) tool to facilitate querying and modifying the database using C# language. Additionally, the asynchronous programming model is adopted to enhance API performance and scalability.
 
