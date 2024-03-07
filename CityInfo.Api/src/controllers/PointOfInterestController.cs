@@ -16,11 +16,11 @@ public class pointofinterestController : ControllerBase
         if (city == null)
         {
             return NotFound();
-        }    
+        }
         return Ok(city.PointsOfInterest);
     }
-    
-    [HttpGet("{pointOfInterestId}")]
+
+    [HttpGet("{pointOfInterestId}", Name = "GetPointOfInterest")]
     public ActionResult<PointsOfInterestDto> GetPointOfInterest(int cityId, int pointOfInterestId)
     {
         var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
@@ -34,5 +34,21 @@ public class pointofinterestController : ControllerBase
             return NotFound();
         }
         return Ok(pointOfInterest);
+    }
+
+    [HttpPost]
+    public ActionResult<PointsOfInterestDto> CreatePointofInterst([FromRoute] int cityId, PointOfInterestForCreatingDto pointOfInterest)
+    {
+        var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+        if (city == null)
+            return NotFound();
+        var finalPointOfInterest = new PointsOfInterestDto()
+        {
+            Id = city.NumberOfPointsOfInterest + 1,
+            Name = pointOfInterest.Name,
+            Description = pointOfInterest.Description
+        };
+        city.PointsOfInterest.Add(finalPointOfInterest);
+        return CreatedAtRoute("GetPointOfInterest", new { cityId = cityId, pointOfInterestId = finalPointOfInterest.Id }, finalPointOfInterest);
     }
 }
