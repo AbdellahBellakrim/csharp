@@ -75,3 +75,22 @@ The project utilizes SQL Server with ASP.NET configuration and .NET Secret Manag
     - Caution emphasized for supporting file uploads due to potential risks.
 
 ## **Module 4: Working with Services and Dependency Injection**
+
+- Dependency Injection in ASP.NET Core:
+    - Built-in dependency injection system.
+    - Specialization of the inversion of control pattern.
+    - Uses a container to initialize objects and provide required dependencies.
+    - Loose coupling advantages: fewer code changes, better testability.
+- Logging Functionality:
+    - Implementation of logging using the built-in logger service.
+    - Registration of custom services on the built-in container in the Program class.
+- Service Lifetimes:
+    - Transient lifetime: Created each time requested; suitable for lightweight, stateless services.
+    - Scoped lifetime: Created once per request.
+    - Singleton lifetime: Created the first time requested, subsequent requests use the same instance.
+- Dependency Injection Usage:
+    - Registering services on the container.
+    - Injecting services using dependency injection into classes requiring instances.
+- Configuration Files:
+    - Use IConfiguration object to access configuration values.
+    - Environment-specific configuration files by adding the environment name to the file name.
