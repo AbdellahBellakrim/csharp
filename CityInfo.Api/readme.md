@@ -94,3 +94,31 @@ The project utilizes SQL Server with ASP.NET configuration and .NET Secret Manag
 - Configuration Files:
     - Use IConfiguration object to access configuration values.
     - Environment-specific configuration files by adding the environment name to the file name.
+
+## **Module 5: Getting Acquainted with Entity Framework Core**
+
+- Introduction to Entity Framework Core:
+    - Entity Framework Core (EF Core) as an object-relational mapper (ORM).
+    - Object-relational mapping allows querying and manipulating data using an object-oriented paradigm.
+    - EF Core is the preferred ORM for .NET.
+- Entity Classes vs DTOs:
+    - Entity classes represent the data model for the underlying database.
+    - Distinction between DTOs (outer-facing model) and entities (inner model).
+    - Annotations or conventions used to define aspects like Primary and Foreign Keys.
+- DbContext and DbSets:
+    - DbContext represents a session with the database.
+    - DbSets registered on DbContext to represent sets of entities.
+    - LINQ used to query and save instances of entities.
+- Migrations:
+    - Database evolves with code changes.
+    - Migrations provide code to change the database from one version to another.
+    - Allows adding, dropping, or altering tables.
+- Seeding the Database:
+    - Use the hasData method when configuring the model to seed the database.
+    - Ensure to add a migration after configuring the model.
+- Connection String Handling:
+    - Transition from hard-coded connection string to a more flexible approach.
+    - Store connection string in appsettings file for Development, and use Environment variables for Production.
+- SQL Injection Considerations:
+    - Entity Framework Core provides protection against SQL injection.
+    - Caution advised when using .FromSqlRaw; potential vulnerabilities.
