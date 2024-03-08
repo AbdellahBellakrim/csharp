@@ -3,8 +3,13 @@ namespace CityInfo.Api.src.services;
 
 public class LocalMailService : IMailService
 {
-    private string _mailTo = "admin@company.com";
-    private string _mailFrom = "noreplay@mycompany.com";
+    private readonly string? _mailTo;
+    private readonly string? _mailFrom;
+    public LocalMailService(IConfiguration configuration)
+    {
+        _mailTo = configuration["MailSettings:mailToAddress"];
+        _mailFrom = configuration["MailSettings:mailFromAddress"];
+    }
 
     public void send(string subject, string message)
     {

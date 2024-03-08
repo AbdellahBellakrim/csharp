@@ -14,6 +14,8 @@ builder.Services.AddControllers(options => options.ReturnHttpNotAcceptable = tru
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
+
+// compile directive to use the LocalMailService in development and the CloudMailService in production
 #if DEBUG
 builder.Services.AddTransient<IMailService, LocalMailService>();
 #else
