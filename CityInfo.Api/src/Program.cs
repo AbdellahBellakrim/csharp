@@ -1,4 +1,5 @@
 using CityInfo.Api.src.dataStores;
+using CityInfo.Api.src.dbContexts;
 using CityInfo.Api.src.services;
 using Microsoft.AspNetCore.StaticFiles;
 using Serilog;
@@ -14,6 +15,7 @@ builder.Services.AddControllers(options => options.ReturnHttpNotAcceptable = tru
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
+builder.Services.AddDbContext<CityInfoContext>();
 
 // compile directive to use the LocalMailService in development and the CloudMailService in production
 #if DEBUG
