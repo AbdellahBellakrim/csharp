@@ -2,6 +2,7 @@ using CityInfo.Api.src.dataStores;
 using CityInfo.Api.src.dbContexts;
 using CityInfo.Api.src.services;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.Console().WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day).CreateLogger();
@@ -15,7 +16,7 @@ builder.Services.AddControllers(options => options.ReturnHttpNotAcceptable = tru
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
-builder.Services.AddDbContext<CityInfoContext>();
+builder.Services.AddDbContext<CityInfoContext>(dbContectxOptions => dbContectxOptions.UseSqlServer(builder.Configuration.GetConnectionString("CityInfoConnectionString")));
 
 // compile directive to use the LocalMailService in development and the CloudMailService in production
 #if DEBUG
