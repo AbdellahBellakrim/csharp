@@ -12,7 +12,7 @@ public class PointOfInterest
     [Required]
     [MaxLength(50)]
     public string Name { get; set; }
-
+    [MaxLength(200)]
     public string? Description { get; set; }
 
     // this is the foreign key property : we use it to create a relationship between the City and PointOfInterest entities, (this property is not required, only for clarity purposes)
