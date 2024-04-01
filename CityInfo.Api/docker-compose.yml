@@ -5,11 +5,12 @@ services:
     image: "mcr.microsoft.com/mssql/server"
     env_file:
       - .env
+    user: root
     container_name: "sqlserver"
     ports:
       - "1433:1433"
-    # volumes:
-    #   - ./database/mssql/:/var/opt/mssql
+    volumes:
+      - ./database/mssql/:/var/opt/mssql/data
     networks:
       - local
 networks:

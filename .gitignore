@@ -45,3 +45,4 @@
 **/database/
 **/migrations/
 **/Migrations/
+**/logs/
