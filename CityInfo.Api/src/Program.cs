@@ -17,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddDbContext<CityInfoContext>(dbContectxOptions => dbContectxOptions.UseSqlServer(builder.Configuration.GetConnectionString("CityInfoConnectionString")));
+builder.Services.AddScoped<ICityInfoRepository, CityInfoRepository>();
 
 // compile directive to use the LocalMailService in development and the CloudMailService in production
 #if DEBUG
