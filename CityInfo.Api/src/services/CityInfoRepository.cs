@@ -37,4 +37,28 @@ public class CityInfoRepository : ICityInfoRepository
     {
         return await _context.PointsOfInterest.Where(p => p.CityId == cityId).ToListAsync();
     }
+
+    public async Task<bool> CityExistsAsync(int cityId)
+    {
+        return await _context.Cities.AnyAsync(c => c.Id == cityId);
+    }
+
+    public async Task AddPointOfInterestForCityAsync(int cityId, PointOfInterest pointOfInterest)
+    {
+        var city = await GetCityAsync(cityId, false);
+        if (city != null)
+        {
+            city.PointsOfInterest.Add(pointOfInterest);
+        }
+    }
+
+    public async Task<bool> SaveChangesAsync()
+    {
+        return (await _context.SaveChangesAsync() >= 0);
+    }
+
+    public void DeletePointOfInterest(PointOfInterest pointOfInterest)
+    {
+        _context.PointsOfInterest.Remove(pointOfInterest);
+    }
 }

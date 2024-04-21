@@ -1,3 +1,4 @@
+using AutoMapper;
 using CityInfo.Api.src.dataStores;
 using CityInfo.Api.src.dbContexts;
 using CityInfo.Api.src.services;
@@ -18,6 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddDbContext<CityInfoContext>(dbContectxOptions => dbContectxOptions.UseSqlServer(builder.Configuration.GetConnectionString("CityInfoConnectionString")));
 builder.Services.AddScoped<ICityInfoRepository, CityInfoRepository>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // compile directive to use the LocalMailService in development and the CloudMailService in production
 #if DEBUG
