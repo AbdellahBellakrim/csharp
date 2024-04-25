@@ -39,7 +39,7 @@ public class authenticationController : ControllerBase
 
     private CityUser validateUser(string? username, string? password)
     {
-        return new CityUser(1, "username", "firstName", "lastName", "city");
+        return new CityUser(1, "username", "firstName", "lastName", "Antwerp");
     }
 
     [HttpPost("login")]
